@@ -32,14 +32,14 @@ The logged object has no required fields, but there are some standards.
 ### Example Configurations
 
     // Encode query string with http://pressbin.com/tools/urlencode_urldecode
-    heroku drains -a hzs-web-demo
-    heroku drains:remove -a hzs-web-demo d.ac16daae-6261-44d2-a6f3-68312925ecc0
+    heroku drains -a hzs-web
+    heroku drains:remove -a hzs-api
     heroku drains:add https://hzslogger.hazardscout.com/api/syslog?{"defaults":{"env":"demo","proc":"web"}} -a hzs-web-demo
 
     // Examples
-    heroku drains:add https://hzslogger.hazardscout.com/api/syslog?%7B%22defaults%22%3A%7B%22env%22%3A%22demo%22%2C%22proc%22%3A%22web%22%7D%7D -a hzs-web-demo
-    heroku drains:add https://hzslogger.hazardscout.com/api/syslog?%7B%22defaults%22%3A%7B%22env%22%3A%22demo%22%2C%22proc%22%3A%22api%22%7D%7D -a hzs-api-demo
-    heroku drains:add https://hzslogger.hazardscout.com/api/syslog?%7B%22defaults%22%3A%7B%22env%22%3A%22demo%22%2C%22proc%22%3A%22grind%22%7D%7D -a hzs-grind-demo
+    heroku drains:add https://hzslogger.hazardscout.com/api/syslog?%7B%22defaults%22%3A%7B%22env%22%3A%22real%22%2C%22proc%22%3A%22web%22%7D%7D -a hzs-web
+    heroku drains:add https://hzslogger.hazardscout.com/api/syslog?%7B%22defaults%22%3A%7B%22env%22%3A%22real%22%2C%22proc%22%3A%22api%22%7D%7D -a hzs-api
+    heroku drains:add https://hzslogger.hazardscout.com/api/syslog?%7B%22defaults%22%3A%7B%22env%22%3A%22real%22%2C%22proc%22%3A%22grind%22%7D%7D -a hzs-grind
 
 
 ### Background
