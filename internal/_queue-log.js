@@ -29,7 +29,7 @@ var sendSoon = function sendSoon(options){
 
       //retry send
       sendSoon(options);
-    }, timeOfNextAllowedSend);
+    }, timeOfNextAllowedSend - now);
     return;
   }
 
