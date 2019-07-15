@@ -66,8 +66,30 @@ function sendLogs (logs, options) {
 
   var req = https.request(reqOptions);
   req.on('error', function(e) {});
-  req.write(JSON.stringify(logs)+'\n');
+  try {
+    req.write(safelyStringify(logs)+'\n');
+  }catch(e){
+    req.write("\n");
+  }
   req.end();
 };
 
+
+/**
+ * Circular structures throw in JSON.stringify so we remove duplicate properties.
+ */
+function safelyStringify (obj) {
+  var cache = [];
+  return JSON.stringify(obj, function(key, value) {
+    if (typeof value === 'object' && value !== null) {
+      if (cache.indexOf(value) !== -1) {
+        return;// Duplicate reference found, discard key
+      }else{
+        // Store value in our collection
+        cache.push(value);
+      }
+    }
+    return value;
+  });
+};
 
